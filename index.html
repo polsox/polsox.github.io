@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <title>When will polsox play league of legends?</title>
+  <style>
+    body {
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    min-height: 100vh; 
+    margin: 0; 
+    background-color: rgb(38, 38, 38);
+    color: white;
+    }
+
+    h1 {
+    font-size: 2rem;
+    margin-bottom: 20px; 
+    }
+
+    #countdown {
+  font-size: 3em;  
+  display: flex; 
+  gap: 20px; 
+  flex-direction: row; 
+  align-items: center; 
+}
+
+.countdown-box { 
+    border: 1px solid #ddd; 
+  padding: 25px 30px; 
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0, 0.1); 
+  font-weight: 500;
+  text-align: center; 
+}
+
+
+.countdown-label {
+  font-size: 0.8em;
+}
+
+  </style>
+</head>
+<body>
+  <h1>Remember, it's only</h1>
+  <div id="countdown"></div>
+
+  <h1>Until polsox will play League of Legends with Gamer.</h1>
+  
+  <script>
+    function loadTargetDate() {
+      const storedTargetTime = localStorage.getItem("targetDate");
+      if (storedTargetTime) {
+        return new Date(storedTargetTime);
+      } else {
+        const defaultTargetDate = new Date();
+        defaultTargetDate.setFullYear(2026, 0, 6); 
+        return defaultTargetDate;
+      }
+    }
+
+    function saveTargetDate(targetDate) {
+      localStorage.setItem("targetDate", targetDate.toString());
+    }
+
+    let targetDate = loadTargetDate(); 
+
+    saveTargetDate(targetDate);
+
+    var countdownInterval = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = targetDate - now;
+
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+      document.getElementById("countdown").innerHTML = 
+      `<div class="countdown-box">
+         ${days} 
+         <div class="countdown-label">Days</div> 
+     </div>` + 
+     `<div class="countdown-box">
+         ${hours} 
+         <div class="countdown-label">Hours</div> 
+     </div>` + 
+     `<div class="countdown-box">
+         ${minutes} 
+         <div class="countdown-label">Minutes</div> 
+     </div>` +     `<div class="countdown-box">
+         ${seconds} 
+         <div class="countdown-label">Seconds</div> 
+     </div>`;
+
+      if (distance < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById("countdown").innerHTML = "Time to play!!!";
+
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
