@@ -1,110 +1,140 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-  <title>When will polsox play league of legends?</title>
-  <style>
-    body {
-    font-family: "Poppins", sans-serif;
-    text-align: center;
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
-    min-height: 100vh; 
-    margin: 0; 
-    background-color: rgb(38, 38, 38);
-    color: white;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When will pol play league of legends?</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sono:wght@200..800&display=swap');
+        
+        body {
+            font-family: 'Sono', sans-serif;
+            color: #e7a3f0;
+            text-align: center;
+            background-image: url('https://w.wallhaven.cc/full/3l/wallhaven-3l8w1v.jpg');
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
 
-    h1 {
-    font-size: 1rem;
-    margin-bottom: 20px; 
-    }
-
-    #countdown {
-  font-size: 1em;  
-  display: flex; 
-  gap: 20px; 
-  flex-direction: row; 
-  align-items: center; 
-}
-
-.countdown-box { 
-    border: 1px solid #ddd; 
-  padding: 25px 30px; 
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0, 0.1); 
-  font-weight: 500;
-  text-align: center; 
-}
+        .background-blur {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(5px);
+            background-color: #000000a8;
+            z-index: -1;
+        }
 
 
-.countdown-label {
-  font-size: 0.8em;
-}
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 4px #000000;
+            backdrop-filter: blur(5px);
+        }
 
-  </style>
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: fadeIn 2s;
+        }
+
+        .time-section {
+            margin: 0 15px;
+            text-align: center;
+        }
+
+        .time-section span {
+            display: block;
+            font-size: 2em;
+            color: #bc48ff;
+        }
+
+        .time-label {
+            font-size: 1em;
+            color: #e7a3f0;
+        }
+
+        #message {
+            font-size: 1.2em;
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
 </head>
 <body>
-  <h1>Remember, it's only</h1>
-  <div id="countdown"></div>
+    <div class="background-blur"></div>
+    <div id="message">Countdown to when pol will play league with gamer...</div>
+    <div class="countdown-container">
+        <div class="time-section">
+            <span id="days">0</span>
+            <div class="time-label">Days</div>
+        </div>
+        <div class="time-section">
+            <span id="hours">0</span>
+            <div class="time-label">Hours</div>
+        </div>
+        <div class="time-section">
+            <span id="minutes">0</span>
+            <div class="time-label">Minutes</div>
+        </div>
+        <div class="time-section">
+            <span id="seconds">0</span>
+            <div class="time-label">Seconds</div>
+        </div>
+    </div>
+    
+    <script>
+        const targetDate = new Date('January 6, 2025 00:00:00').getTime();
 
-  <h1>Until polsox will play League of Legends with Gamer.</h1>
-  
-  <script>
-    function loadTargetDate() {
-      const storedTargetTime = localStorage.getItem("targetDate");
-      if (storedTargetTime) {
-        return new Date(storedTargetTime);
-      } else {
-        const defaultTargetDate = new Date();
-        defaultTargetDate.setFullYear(2025, 0, 6); 
-        return defaultTargetDate;
-      }
-    }
+        const interval = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
 
-    function saveTargetDate(targetDate) {
-      localStorage.setItem("targetDate", targetDate.toString());
-    }
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    let targetDate = loadTargetDate(); 
+            document.getElementById('days').innerText = days;
+            document.getElementById('hours').innerText = hours;
+            document.getElementById('minutes').innerText = minutes;
+            document.getElementById('seconds').innerText = seconds;
 
-    saveTargetDate(targetDate);
-
-    var countdownInterval = setInterval(function() {
-      var now = new Date().getTime();
-      var distance = targetDate - now;
-
-      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-
-      document.getElementById("countdown").innerHTML = 
-      `<div class="countdown-box">
-         ${days} 
-         <div class="countdown-label">Days</div> 
-     </div>` + 
-     `<div class="countdown-box">
-         ${hours} 
-         <div class="countdown-label">Hours</div> 
-     </div>` + 
-     `<div class="countdown-box">
-         ${minutes} 
-         <div class="countdown-label">Minutes</div> 
-     </div>` +     `<div class="countdown-box">
-         ${seconds} 
-         <div class="countdown-label">Seconds</div> 
-     </div>`;
-
-      if (distance < 0) {
-        clearInterval(countdownInterval);
-        document.getElementById("countdown").innerHTML = "Time to play!!!";
-
-      }
-    }, 1000);
-  </script>
+            if (distance < 0) {
+                clearInterval(interval);
+                document.getElementById('days').innerText = 0;
+                document.getElementById('hours').innerText = 0;
+                document.getElementById('minutes').innerText = 0;
+                document.getElementById('seconds').innerText = 0;
+                document.getElementById('message').innerText = "It's time to fucking play, please mention polsox on Discord!";
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
